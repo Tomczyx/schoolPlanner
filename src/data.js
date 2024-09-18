@@ -8,7 +8,7 @@ export const data = {
           "tasks": []
       },
   
-      wendesday: {
+      wednesday: {
         "tasks": []
       },
   

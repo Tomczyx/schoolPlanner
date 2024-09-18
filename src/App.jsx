@@ -3,6 +3,7 @@ import Planner from './components/Planner'
 import './App.css'
 import Menu from './components/Menu'
 import { data } from './data'
+import Footer from './components/Footer'
 
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
   const [taskTab , setTaskTab] = useState({
     monday: [],
     tuesday: [],
-    wendesday: [],
+    wednesday: [],
     thursday: [],
     friday: [],
   })
@@ -23,9 +24,8 @@ function App() {
 
       <div>
         <Menu subject={subject} setSubject={setSubject} day={day} setDay={setDay} tasks={tasks} setTasks={setTasks} task={task} setTask={setTask} setTaskTab={setTaskTab} taskTab={taskTab}/>
-        <h5>{subject}</h5>
-        <h5>{day}</h5>
         <Planner tasks={tasks} setTasks={setTasks}/>
+        <Footer />
       </div>
   )
 }

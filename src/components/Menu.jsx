@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export default function Menu({
   subject,
   setSubject,
@@ -17,21 +18,63 @@ export default function Menu({
   }, [taskTab]);
 
   const handleAddTask = (selectedDay, task) => {
-    setTaskTab((prev) => {
-    const updatedTaskTab = { ...prev };
-    updatedTaskTab[selectedDay] = [...updatedTaskTab[selectedDay] , task]
-      setTasks((prevTasks) => {
-        const updatedTasks = { ...prevTasks };
-        updatedTasks[selectedDay].tasks = updatedTaskTab[selectedDay];
-        console.log(updatedTasks);
-        return updatedTasks;
-      });
-      return updatedTaskTab;
-    });
+
+    if(task != null && taskTab[selectedDay].length < 4) {
+
+
+      setTaskTab((prev) => {
+        const updatedTaskTab = { ...prev };
+        updatedTaskTab[selectedDay] = [...updatedTaskTab[selectedDay] , task]
+          setTasks((prevTasks) => {
+            const updatedTasks = { ...prevTasks };
+            updatedTasks[selectedDay].tasks = updatedTaskTab[selectedDay];
+
+            return updatedTasks;
+          });
+          
+          return updatedTaskTab;
+          
+        });
+        toast.success('Task added successfully!', {
+          position: "top-right",
+          autoClose: 2501,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          });
+    } else {
+
+                  toast.error('Task cannot be empty!', {
+              position: "top-right",
+              autoClose: 2501,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "dark",
+              });
+    }
+ 
   };
 
   return (
     <header className="flex justify-center items-center h-20 bg-yellow-500">
+              <ToastContainer
+position="top-right"
+autoClose={2501}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="dark"
+/>
       <div>
         <input
           type="text"
@@ -55,7 +98,7 @@ export default function Menu({
           <option disabled>Wybierz dzień!</option>
           <option>monday</option>
           <option>tuesday</option>
-          <option>wendesday</option>
+          <option>wednesday</option>
           <option>thursday</option>
           <option>friday</option>
         </select>
