@@ -17,22 +17,28 @@ export default function Menu({
   dark
 }) {
   useEffect(() => {
-    console.log(taskTab);
+
   }, [taskTab]);
 
-  const handleAddTask = (selectedDay, task) => {
-    if (task != null && taskTab[selectedDay].length < 4) {
+  const handleAddTask = (selectedDay, task , subject) => {
+const f = taskTab[selectedDay];
+
+    if (task != null) {
       setTaskTab((prev) => {
         const updatedTaskTab = { ...prev };
-        updatedTaskTab[selectedDay] = [...updatedTaskTab[selectedDay], task];
+        console.log(updatedTaskTab)
+        updatedTaskTab[selectedDay] = [...updatedTaskTab[selectedDay].tasks, { task: task, subject: subject }];
         setTasks((prevTasks) => {
           const updatedTasks = { ...prevTasks };
           updatedTasks[selectedDay].tasks = updatedTaskTab[selectedDay];
+          updatedTasks[selectedDay].subject = subject;
+          console.log(updatedTasks)
 
           return updatedTasks;
         });
 
         return updatedTaskTab;
+        
       });
       toast.success("Task added successfully!", {
         position: "top-right",
@@ -86,9 +92,9 @@ export default function Menu({
           defaultValue={"Wybierz przedmiot!"}
         >
           <option disabled>Wybierz przedmiot!</option>
-          <option>Opcja 1</option>
-          <option>Opcja 2</option>
-          <option>Opcja 3</option>
+          <option value="math">Math</option>
+          <option value="physics">Physics</option>
+          <option value="chemistry">Chemistry</option>
         </select>
         <select
           onChange={(e) => setDay(e.target.value)}
@@ -96,14 +102,14 @@ export default function Menu({
           className="m-10"
         >
           <option disabled>Wybierz dzień!</option>
-          <option>monday</option>
-          <option>tuesday</option>
-          <option>wednesday</option>
-          <option>thursday</option>
-          <option>friday</option>
+          <option value="monday">Monday</option>
+          <option value="tuesday">Tuesday</option>
+          <option value="wednesday">Wednesday</option>
+          <option value="thursday">Thursday</option>
+          <option value="friday">Friday</option>
         </select>
-        <button onClick={() => handleAddTask(day, task)} className="m-10">
-          Dodaj
+        <button onClick={() => handleAddTask(day, task , subject)} className="m-10">
+          Add
         </button>
         <DarkMode dark={dark} setDark={setDark}/>
 

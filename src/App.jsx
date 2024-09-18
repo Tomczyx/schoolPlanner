@@ -18,11 +18,46 @@ function App() {
   // }, [dark])
 
   const [taskTab , setTaskTab] = useState({
-    monday: [],
-    tuesday: [],
-    wednesday: [],
-    thursday: [],
-    friday: [],
+    monday: {
+      tasks: [
+        {
+          task: '',
+          subject: ''
+        }
+      ]
+    },
+    tuesday:  {
+      tasks: [
+        {
+          task: '',
+          subject: ''
+        }
+      ]
+    },
+    wednesday:  {
+      tasks: [
+        {
+          task: '',
+          subject: ''
+        }
+      ]
+    },
+    thursday:  {
+      tasks: [
+        {
+          task: '',
+          subject: ''
+        }
+      ]
+    },
+    friday:  {
+      tasks: [
+        {
+          task: '',
+          subject: ''
+        }
+      ]
+    },
   })
 
 
