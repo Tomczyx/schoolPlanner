@@ -1,44 +1,57 @@
-import React from 'react'
-import DayTitle from './DayTitle'
+import React from "react";
+import DayTitle from "./DayTitle";
+import DayContainer from "./DayContainer";
 
-export default function Planner({tasks , setTasks}) {
+export default function Planner({ tasks, setTasks }) {
   return (
-    
     <>
+      <div className="h-[100%] w-[100%] flex md:flex-row flex-col ">
+        <DayContainer day={"Monday"}>
+          {tasks.monday.tasks.map((task, index) => (
+            <div className="rounded-lg p-3 pb-4 pl-5 relative overflow-hidden bg-[#c0f2c7] m-4">
+              <div className="absolute w-1.5 top-0 bottom-0 left-0 bg-[#1a4d23]"></div>
+              <h2 key={index}>{task}</h2>
+            </div>
+          ))}
+        </DayContainer>
 
-    <div className='h-[100%] w-[100%] flex md:flex-row flex-col'>
-    <div className="day monday bg-[#f6faf3] w-[100%] md:w-[20%] h-[100vh]">
-        <DayTitle>Monday</DayTitle>
-        {tasks.monday.tasks.map((task , index) => (
-            <h2 key={index}>{task}</h2>
-        ))}
+        <DayContainer day={"Tuesday"}>
+          {tasks.tuesday.tasks.map((task, index) => (
+            <div className="rounded-lg p-3  relative overflow-hidden bg-[#c0f2c7] m-4">
+              <div className="absolute w-1.5 top-0 bottom-0 left-0 bg-[#1a4d23]"></div>
+              <h2 key={index}>{task}</h2>
+            </div>
+          ))}
+        </DayContainer>
 
-    </div>
-    <div className="day tuesday bg-[#f6faf3] w-[100%] md:w-[20%] h-[100vh]">
-    <DayTitle>Tuesday</DayTitle>
-    {tasks.tuesday.tasks.map((task , index) => (
-            <h2 key={index}>{task}</h2>
-        ))}
-        </div>
-        <div className="day wendesday bg-[#f6faf3] w-[100%] md:w-[20%] h-[100vh]">
-        <DayTitle>Wednesday</DayTitle>
-        {tasks.wednesday.tasks.map((task , index) => (
-            <h2 key={index}>{task}</h2>
-        ))}
-        </div>
-        <div className="day thursday bg-[#f6faf3] w-[100%] md:w-[20%] h-[100vh]">
-        <DayTitle>Thursday</DayTitle>
-        {tasks.thursday.tasks.map((task , index) => (
-            <h2 key={index}>{task}</h2>
-        ))}
-        </div>
-        <div className="day friday bg-[#f6faf3] w-[100%] md:w-[20%] h-[100vh]">
-        <DayTitle>Friday</DayTitle>
-        {tasks.friday.tasks.map((task , index) => (
-            <h2 key={index}>{task}</h2>
-        ))}
-        </div>
-        </div>
+        <DayContainer day={"Wednesday"}>
+          {tasks.wednesday.tasks.map((task, index) => (
+            <div className="rounded-lg p-3 pb-4 pl-5 relative overflow-hidden bg-[#c0f2c7] m-4">
+              <div className="absolute w-1.5 top-0 bottom-0 left-0 bg-[#1a4d23]"></div>
+              <h2 key={index}>{task}</h2>
+            </div>
+          ))}
+        </DayContainer>
+
+        <DayContainer day={"Thursday"}>
+          {tasks.thursday.tasks.map((task, index) => (
+            <div className="rounded-lg p-3 pb-4 pl-5 relative overflow-hidden bg-[#c0f2c7] m-4">
+              <div className="absolute w-1.5 top-0 bottom-0 left-0 bg-[#1a4d23]"></div>
+              <h2 key={index}>{task}</h2>
+            </div>
+          ))}
+        </DayContainer>
+
+        <DayContainer day={"Friday"}>
+          {tasks.friday.tasks.map((task, index) => (
+            <div className="rounded-lg p-3 pb-4 pl-5 relative overflow-hidden bg-[#c0f2c7] m-4">
+              {" "}
+              <div className="absolute w-1.5 top-0 bottom-0 left-0 bg-[#1a4d23]"></div>
+              <h2 key={index}>{task}</h2>
+            </div>
+          ))}
+        </DayContainer>
+      </div>
     </>
-  )
+  );
 }

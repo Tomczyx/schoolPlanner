@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Planner from './components/Planner'
 import './App.css'
 import Menu from './components/Menu'
@@ -11,6 +11,12 @@ function App() {
   const [day , setDay] = useState(null)
   const [task , setTask] = useState(null)
   const [tasks , setTasks] = useState(data)
+
+  // useEffect(() => {
+  //   const result = localStorage.getItem("dark")
+  //   setDark(result)
+  // }, [dark])
+
   const [taskTab , setTaskTab] = useState({
     monday: [],
     tuesday: [],
